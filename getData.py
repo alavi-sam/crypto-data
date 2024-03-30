@@ -17,8 +17,18 @@ class Crypto:
 
 
     def get_buy(self, date=None):
-        pass
+        if date:
+            res = requests.get(f'https://api.coinbase.com/v2/prices/{self.base}-{self.currency}/buy?date={date}')
+        else:
+            res = requests.get(f'https://api.coinbase.com/v2/prices/{self.base}-{self.currency}/buy')
+        return res.json()
+
 
 
     def get_spot(self, date=None):
-        pass
+        if date:
+            res = requests.get(f'https://api.coinbase.com/v2/prices/{self.base}-{self.currency}/spot?date={date}')
+        else:
+            res = requests.get(f'https://api.coinbase.com/v2/prices/{self.base}-{self.currency}/spot')
+        return res.json()
+
